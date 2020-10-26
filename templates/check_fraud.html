@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    input, textarea {
+        padding: 9px;
+        border: solid 1px #E5E5E5;
+        outline: 0;
+        font: normal 13px/100% Verdana, Tahoma, sans-serif;
+        width: 200px;
+        background: #FFFFFF url('bg_form.png') left top repeat-x;
+        background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+        background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+        box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        }
+
+    textarea {
+        width: 400px;
+        max-width: 400px;
+        height: 150px;
+        line-height: 150%;
+        }
+
+    input:hover, textarea:hover,
+    input:focus, textarea:focus {
+        border-color: #C9C9C9;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+        }
+
+    .form label {
+        margin-left: 10px;
+        color: #999999;
+        }
+
+    .submit input {
+        width: auto;
+        padding: 9px 15px;
+        background: #617798;
+        border: 0;
+        font-size: 14px;
+        color: #FFFFFF;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        }
+
+    h1 {
+        margin-left: 10px;
+        color: #999999;
+    }
+
+    #myform{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    </style>
+    <title>Check Fraud</title>
+</head>
+
+<div id="myform">
+<h1>Web Form</h1>
+
+<form class="form" action="api" method="post">
+    <p class="lead">
+        <input type="text" name="lead_id" id="lead_id">
+        <label for="lead">Lead ID</label>
+    </p>
+    <p class="created">
+        <input type="text" name="lead_created" id="lead_created">
+        <label for="created">Created</label>
+    </p>
+    <p class="source">
+        <input type="text" name="source" id="source">
+        <label for="source">Source</label>
+    </p>
+    <p class="state">
+        <input type="text" name="state" id="state">
+        <label for="state">State</label>
+    </p>
+    <p class="switch">
+        <input type="text" name="switching" id="switching">
+        <label for="switch">Switching</label>
+    </p>
+    <p class="company">
+        <input type="text" name="company" id="company">
+        <label for="company">Company</label>
+    </p>
+    <p class="submit">
+        <input type="submit" value="Submit">
+        <a href="#" id="mylink">Generate Values</a><br>
+    </p>
+</form>
+<div>
+
+<script>
+window.onload = initAll;
+
+var leadid = new Array(2, 15, 6, 87, 94, 34, 77);
+var created = new Array("1/17/2015", "2/22/2015", "2/28/2015", "3/29/2015", "02/24/2015", "4/10/2015", "4/17/2015");
+var source = new Array("Adwords", "Facebook", "Inbound Referral", "Direct", "SEO", "freshbooks", "bing", "Resource Download", "Data Sourcing", "tsheets", "Sales Inquiry");
+var state = new Array("CA", "TX", "NC", "CO", "NY", "VA", "CT, FL", "LA", "IN", "MI", "AZ,CA,MD,NY,NC", "MA,NY");
+var switching = new Array("Switching", "New Company", "Unknown");
+var company = new Array("Runolfsson-Wyman", "Leffler-Sauer", "Champlin-Harris", "Ruecker, Cassin and Yundt", "Parker, O'Conner and Green", "Cruickshank, Windler and O'Keefe", "Ernser LLC", "Gerlach, McKenzie and Treutel");
+
+function initAll() {
+    genvalues()
+    document.getElementById('mylink').onclick = genvalues;
+}
+
+function genvalues() {
+    var m_random = Math.floor(Math.random() * 10000);
+    document.getElementById('lead_id').value = m_random;
+
+    var m_random = Math.floor(Math.random() * 7);
+    document.getElementById('lead_created').value = created[m_random];
+
+    var m_random = Math.floor(Math.random() * 12);
+    document.getElementById('source').value = source[m_random];
+
+    var m_random = Math.floor(Math.random() * 13);
+    document.getElementById('state').value = state[m_random];
+
+    var m_random = Math.floor(Math.random() * 3);
+    document.getElementById('switching').value = switching[m_random];
+
+    var m_random = Math.floor(Math.random() * 9);
+    document.getElementById('company').value = company[m_random];
+}
+
+
+</script>
+
+</html>
